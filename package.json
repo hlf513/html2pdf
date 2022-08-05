@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "easy-pdf-merge": "^0.2.6",
+    "pdf-lib": "^1.17.1",
+    "puppeteer": "^16.0.0"
+  }
+}
