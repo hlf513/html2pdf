@@ -18,6 +18,7 @@ async function captureToPDF(browser, url, pdfOutputDir) {
     await page.close();
   } catch (err) {
     console.error(`error when capturing ${url}, error message: ${err.message}`);
+    console.error('ERR_INVALID_URL, 表示使用的是相对路径，请使用绝对路径；因为chromium运行相对路径会找不到文件')
   }
 }
 
@@ -37,7 +38,8 @@ async function main(){
 
   const urls = fs.readdirSync(process.argv[2])
 
-  const browser = await puppeteer.launch();
+  // true 表示后台运行 chromium, false 表示前台运行 chromium
+  const browser = await puppeteer.launch({headless:true});
 
   for (var url of urls) {
     if (url == ".DS_Store"){

@@ -15,6 +15,8 @@ function main(){
             return
         }
         const content = remove_html(parse(fs.readFileSync(process.argv[2]+'/'+item)))
+        // todo 新文件名
+        item = item.replace('something','')
         fs.writeFileSync(process.argv[3]+"/"+item,content)
         console.log(item)
     })
@@ -33,8 +35,10 @@ function remove_html(root){
     // 分割线
     root.querySelector("._2SACi4xg_0").remove()
     // 音频
-    root.querySelector("._1Bg5E78Y_0").innerHTML="<br>"
-    root.querySelector("._1Bg5E78Y_0").setAttribute("class","")
+    if (root.querySelector("._1Bg5E78Y_0") != null){
+    	root.querySelector("._1Bg5E78Y_0").innerHTML="<br>"
+    	root.querySelector("._1Bg5E78Y_0").setAttribute("class","")
+    }
     // 尾图
     const imgs = root.querySelector("._29HP61GA_0").querySelectorAll("p").length
     if (imgs > 1){
