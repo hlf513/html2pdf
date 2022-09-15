@@ -1,6 +1,6 @@
-const puppeteer = require('puppeteer');
-const fs = require('fs');
-const path=require('path');
+import puppeteer from 'puppeteer'
+import fs from 'fs'
+import path from 'path'
 
 function sleep(ms){
   return new Promise(resolve=>setTimeout(resolve,ms)) 
@@ -40,6 +40,9 @@ async function main(){
   const browser = await puppeteer.launch();
 
   for (var url of urls) {
+    if (url == ".DS_Store"){
+      continue
+    }
     await captureToPDF(browser, 'file://'+process.argv[2]+'/'+url, process.argv[3]);
     // 控制转换频率
     await sleep(1000);

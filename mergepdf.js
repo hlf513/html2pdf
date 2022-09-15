@@ -1,5 +1,5 @@
-const merge = require('easy-pdf-merge');
-const fs = require('fs');
+import merge from 'easy-pdf-merge'
+import fs from 'fs'
 
 function main(){
     if (process.argv.length != 4) {
@@ -10,12 +10,15 @@ function main(){
 
     var urls = new Array()
     fs.readdirSync(process.argv[2]).forEach(item=>{
+        if (item == ".DS_Store"){
+            return
+        }
         urls.push(process.argv[2]+'/'+item)
     })
     console.log(urls.sort())
 
     // maxBuffer: 1GB （执行子命令时需要）
-    merge(urls.sort(),process.argv[3], {maxBuffer:1024*1024*1024},function (err) {
+    merge(urls.sort(),process.argv[3], {maxBuffer:1024*1024*1024,maxHeap: '2g'},function (err) {
         if (err) {
             return console.log(err)
         }
