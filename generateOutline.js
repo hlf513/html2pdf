@@ -17,7 +17,7 @@ async function main() {
             continue
         }
         const path = process.argv[2]+'/'+item
-        const filename = path.split('/').pop().replace('.pdf','').replace("【daobanke.com】",'')
+        const filename = path.split('/').pop().replace('.pdf','').replace("something",'')
         // .replace(/\d{2}/,'')
         const pdf = await PDFDocument.load(fs.readFileSync(path))
         console.log(filename+" "+page)
