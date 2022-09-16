@@ -38,8 +38,9 @@ async function main(){
 
   const urls = fs.readdirSync(process.argv[2])
 
-  // true 表示后台运行 chromium, false 表示前台运行 chromium
-  const browser = await puppeteer.launch({headless:true});
+  // headless:true 表示后台运行 chromium, false 表示前台运行 chromium
+  // --no-sandbox 是 linux 必填参数
+  const browser = await puppeteer.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});
 
   for (var url of urls) {
     if (url == ".DS_Store"){

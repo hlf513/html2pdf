@@ -3,9 +3,12 @@
 
 ![html2pdf](html2pdf.svg)
 
-## 安装
+## 准备工作
 ```shell
-npm install
+make build # 构建本地镜像
+make run # 启动容器 (默认挂载的是宿主机的/tmp目录)
+make exec # 进入容器
+html2pdf> npm install 
 ```
 ## 使用
 
@@ -23,3 +26,10 @@ npm install
         node generateOutline.js <pdf_input_dir> > book.toc
         ```
     1. 可以使用 ghostscript，也可使用已封装好的 lib，例如: [pdfoutline](https://github.com/yutayamamoto/pdfoutline)。
+
+# 测试结果
+## 验证通过
+- 在 Linux x86、 Linux ARM64 上运行良好
+## 已知问题
+- 在 Apple Silicon 上使用 `puppeteer` 保存的 PDF 文件有问题（文字复制出现倒序情况）
+- ~~若是 PDF 文件名是中文，则需要配置中文字符集，否则合并 PDF 时会报找不到文件的错误~~
