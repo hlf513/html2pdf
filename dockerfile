@@ -20,6 +20,11 @@ RUN mkdir /html2pdf /data
 ADD . /html2pdf/ 
 # RUN npm install
 
+# 安装 pdfoutline
+RUN apt install -y ghostscript
+RUN mkdir /pdfoutline
+RUN git clone https://github.com/yutayamamoto/pdfoutline.git 
+
 WORKDIR /html2pdf
 
 ENTRYPOINT [ "tail","-f","/dev/null" ]
