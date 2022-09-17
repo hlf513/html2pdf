@@ -24,6 +24,7 @@ ADD . /html2pdf/
 RUN apt install -y ghostscript
 RUN mkdir /pdfoutline
 RUN git clone https://github.com/yutayamamoto/pdfoutline.git 
+RUN cp /pdfoutline/pdfoutline.py /html2pdf/
 
 WORKDIR /html2pdf
 

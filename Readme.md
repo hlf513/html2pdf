@@ -32,4 +32,5 @@ html2pdf> npm install
 - 在 Linux x86、 Linux ARM64 上运行良好
 ## 已知问题
 - 在 Apple Silicon 上使用 `puppeteer` 保存的 PDF 文件有问题（文字复制出现倒序情况）
+- 在 Apple Silicon 上使用 `ghostscript` 创建目录后的 PDF 文件有问题（文字复制乱码）
 - ~~若是 PDF 文件名是中文，则需要配置中文字符集，否则合并 PDF 时会报找不到文件的错误~~
