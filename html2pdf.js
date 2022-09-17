@@ -14,7 +14,7 @@ async function captureToPDF(browser, url, pdfOutputDir) {
     await page.goto(url,{
       waitUntil: 'networkidle2',
     });
-    await page.pdf({ path: pdfPath, format: "A4" });
+    await page.pdf({ path: pdfPath, format: "A4" ,margin:{top:50,bottom:50,left:0,right:0}});
     await page.close();
   } catch (err) {
     console.error(`error when capturing ${url}, error message: ${err.message}`);

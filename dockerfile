@@ -16,15 +16,15 @@ ENV LC_LANG=zh_CN.UTF-8
 ADD MSYH.ttf /usr/share/fonts/ 
 RUN mkfontscale && mkfontdir && fc-cache 
 
-RUN mkdir /html2pdf /data 
-ADD . /html2pdf/ 
-# RUN npm install
+RUN mkdir /html2pdf /data /pdfoutline
 
 # 安装 pdfoutline
 RUN apt install -y ghostscript
-RUN mkdir /pdfoutline
 RUN git clone https://github.com/yutayamamoto/pdfoutline.git 
 RUN cp /pdfoutline/pdfoutline.py /html2pdf/
+
+ADD . /html2pdf/ 
+# RUN npm install
 
 WORKDIR /html2pdf
 
