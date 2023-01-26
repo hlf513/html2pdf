@@ -1,6 +1,6 @@
-import puppeteer from 'puppeteer'
-import fs from 'fs'
-import path from 'path'
+import fs from 'fs';
+import path from 'path';
+import puppeteer from 'puppeteer';
 
 function sleep(ms){
   return new Promise(resolve=>setTimeout(resolve,ms)) 
@@ -44,6 +44,9 @@ async function main(){
 
   for (var url of urls) {
     if (url == ".DS_Store"){
+      continue
+    }
+    if (url.split('.').pop() != "html") {
       continue
     }
     await captureToPDF(browser, 'file://'+process.argv[2]+'/'+url, process.argv[3]);
